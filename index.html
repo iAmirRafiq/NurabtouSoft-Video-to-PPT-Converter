@@ -3,171 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download NurabtouSoft - Video to PPT Converter - A sleek and modern tool to convert videos into PowerPoint presentations.">
-    <title>NurabtouSoft - Video to PPT Converter - Download</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <meta name="description" content="NurabtouSoft - 100% Free Video to PPT Converter. Transform your videos into sleek presentations effortlessly.">
+    <title>NurabtouSoft - 100% Free Video to PPT Converter</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #6366F1;
+            --text-color: #E5E7EB;
+            --bg-color: #111827;
+            --card-bg: #1F2937;
+        }
+        
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
         }
-
+        
         .container {
-            max-width: 960px;
-            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
             text-align: center;
-            background-color: #1f1f1f;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.5);
+            margin-bottom: 4rem;
         }
-
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #00bfa6;
-            animation: fadeInDown 1s ease-in-out;
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
-
-        p {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-            color: #b0bec5;
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #9CA3AF;
+            margin-bottom: 2rem;
         }
-
-        .features {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 40px;
+        
+        .free-banner {
+            background-color: #10B981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: .2rem;
         }
-
-        .feature-item {
-            flex: 1;
-            margin: 0 20px;
-        }
-
-        .feature-item i {
-            font-size: 2.5em;
-            color: #00bfa6;
-            margin-bottom: 10px;
-            animation: zoomIn 1s ease-in-out;
-        }
-
-        .feature-item h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: #ffffff;
-        }
-
-        .feature-item p {
-            color: #b0bec5;
-        }
-
-        .download-button {
-            padding: 15px 30px;
-            background-color: #00bfa6;
-            color: #121212;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0px 5px 15px rgba(0, 191, 166, 0.5);
-            animation: fadeInUp 1s ease-in-out;
-        }
-
-        .download-button:hover {
-            background-color: #00a38f;
-        }
-
-        footer {
-            margin-top: 40px;
-            color: #616161;
-        }
-
-        footer a {
-            color: #00bfa6;
+        
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.375rem;
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            font-size: 1.25rem;
+            display: inline-block;
         }
-
-        footer a:hover {
-            color: #00a38f;
+        
+        .cta-button:hover {
+            background-color: #4F46E5;
         }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
-
-        @keyframes zoomIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            text-align: center;
         }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .about {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2rem;
+        }
+        
+        .about h2 {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #9CA3AF;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--primary-color);
+            margin: 0 0.5rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        
+        .social-links a:hover {
+            color: #4F46E5;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>NurabtouSoft - Video to PPT Converter</h1>
-        <p>Transform your videos into powerful presentations with a click.</p>
+        <main>
+            <section class="hero">
+                <div class="logo">NurabtouSoft</div>
+                <div class="free-banner">100% FREE SOFTWARE</div>
+                <h1>Video to PPT Converter</h1>
+                <p class="subtitle">Transform your videos into sleek presentations with just a click. Always free, no hidden costs.</p>
 
-        <div class="features">
-            <div class="feature-item">
-                <i class="fas fa-file-powerpoint"></i>
-                <h3>Convert Videos to PPTX</h3>
-                <p>Automatically create slides from video frames.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-clone"></i>
-                <h3>Remove Duplicates</h3>
-                <p>Keep your presentations concise by eliminating duplicate frames.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-clock"></i>
-                <h3>Custom Intervals</h3>
-                <p>Control the pace of your slides with customizable frame intervals.</p>
-            </div>
-        </div>
-
-        <button class="download-button" onclick="window.location.href='https://drive.google.com/file/d/1zak8RSLMdZSE_hGxO5yBaLUpHqthis8w/view?usp=drive_link'">Download Now</button>
-
+                <a href="https://drive.google.com/file/d/1zak8RSLMdZSE_hGxO5yBaLUpHqthis8w" class="cta-button">Download Now</a>
+            </section>
+            
+            <section class="features">
+                <div class="feature-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h2>Effortless Conversion</h2>
+                    <p>Automatically create polished slides from video frames, saving you hours of manual work.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clone"></i>
+                    <h2>Smart Duplicate Removal</h2>
+                    <p>Our intelligent algorithm eliminates redundant frames, ensuring your presentations stay concise and impactful.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h2>Custom Frame Selection</h2>
+                    <p>Fine-tune your presentation by setting custom intervals for frame selection, giving you full control over your content.</p>
+                </div>
+            </section>
+            
+            <section class="about">
+                <h2>About the Developer</h2>
+                <p>Hi, I'm Amir Rafiq Bhat, a software developer passionate about creating tools that enhance productivity. NurabtouSoft is my commitment to providing powerful, user-friendly solutions accessible to everyone, completely free of charge.</p>
+            </section>
+        </main>
+        
         <footer>
-            <p>© 2024 Amir Rafiq Bhat | All rights reserved.<br><a href="mailto:amirrafiq004@gmail.com">Email</a> | <a href="https://www.linkedin.com/in/amirbhat/">LinkedIn</a> | <a href="https://github.com/iAmirRafiq">GitHub</a></p>
+            <p>&copy; 2024 Amir Rafiq Bhat. All rights reserved.</p>
+            <div class="social-links">
+                <a href="mailto:amirrafiq004@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/amirbhat/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/iAmirRafiq" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
         </footer>
     </div>
 </body>
