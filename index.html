@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="NurabtouSoft - 100% Free Video to PPT Converter. Transform your videos into sleek presentations effortlessly.">
     <title>NurabtouSoft - 100% Free Video to PPT Converter</title>
+    <link rel="icon" href="favicon-32x32.png">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -73,10 +75,17 @@
             transition: background-color 0.3s ease;
             font-size: 1.25rem;
             display: inline-block;
+            cursor: pointer;
+            border: none;
         }
         
         .cta-button:hover {
             background-color: #4F46E5;
+        }
+        
+        .cta-button:disabled {
+            background-color: #9CA3AF;
+            cursor: not-allowed;
         }
         
         .features {
@@ -138,6 +147,18 @@
         .social-links a:hover {
             color: #4F46E5;
         }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-item {
+            font-size: 1.1rem;
+            color: #9CA3AF;
+        }
     </style>
 </head>
 <body>
@@ -149,7 +170,17 @@
                 <h1>Video to PPT Converter</h1>
                 <p class="subtitle">Transform your videos into sleek presentations with just a click. Always free, no hidden costs.</p>
 
-                <a href="https://drive.google.com/file/d/16Q6QgKukU1ZVtMMV29w5o27Zc3zO94P8/" class="cta-button">Download Now</a>
+                <button class="cta-button" id="downloadButton">Download Now</button>
+                
+                <!-- Display Download Count and Visitor Count -->
+                <div class="stats-container">
+                    <div class="stat-item">
+                        Total Downloads: <span id="downloadCount">Loading...</span>
+                    </div>
+                    <div class="stat-item">
+                        Total Visitors: <span id="visitorCount">Loading...</span>
+                    </div>
+                </div>
             </section>
             
             <section class="features">
@@ -185,5 +216,98 @@
             </div>
         </footer>
     </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    
+    <script>
+        // Initialize Firebase (make sure to use your actual config)
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "video-to-ppt-converter.firebaseapp.com",
+            databaseURL: "https://video-to-ppt-converter-default-rtdb.firebaseio.com",
+            projectId: "video-to-ppt-converter",
+            storageBucket: "video-to-ppt-converter.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to the Firebase Realtime Database
+        const database = firebase.database();
+
+        // Function to fetch and display the current download count
+        function fetchDownloadCount() {
+            database.ref('downloadCount').on('value', (snapshot) => {
+                const count = snapshot.val() || 0;
+                document.getElementById('downloadCount').textContent = count;
+            });
+        }
+
+        // Function to fetch, update, and display the visitor count
+        function handleVisitorCount() {
+            const visitorCountRef = database.ref('visitorCount');
+            
+            visitorCountRef.transaction((currentCount) => {
+                return (currentCount || 0) + 1;
+            }).then((result) => {
+                document.getElementById('visitorCount').textContent = result.snapshot.val();
+            }).catch((error) => {
+                console.error('Error updating visitor count:', error);
+                document.getElementById('visitorCount').textContent = 'Error';
+            });
+
+            // Listen for future updates to the visitor count
+            visitorCountRef.on('value', (snapshot) => {
+                document.getElementById('visitorCount').textContent = snapshot.val() || 0;
+            });
+        }
+
+        // Call the functions to initialize counts
+        fetchDownloadCount();
+        handleVisitorCount();
+
+        // Add event listener to the download button
+        const downloadButton = document.getElementById('downloadButton');
+        let isDownloading = false;
+        const cooldownPeriod = 5000; // 5 seconds cooldown
+
+        downloadButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default button behavior
+            
+            if (isDownloading) {
+                return; // Prevent multiple clicks
+            }
+
+            isDownloading = true;
+            downloadButton.disabled = true;
+            downloadButton.textContent = 'Processing...';
+            
+            const countRef = database.ref('downloadCount');
+            countRef.transaction((currentCount) => {
+                return (currentCount || 0) + 1; // Increment count by 1
+            }).then(() => {
+                // Redirect to the actual download link after updating the count
+                window.location.href = 'https://drive.google.com/file/d/1zak8RSLMdZSE_hGxO5yBaLUpHqthis8w/view?usp=drive_link';
+                
+                // Reset button after cooldown period
+                setTimeout(() => {
+                    isDownloading = false;
+                    downloadButton.disabled = false;
+                    downloadButton.textContent = 'Download Now';
+                }, cooldownPeriod);
+            }).catch((error) => {
+                console.error('Error updating download count:', error);
+                alert('An error occurred while processing your download. Please try again.');
+                isDownloading = false;
+                downloadButton.disabled = false;
+                downloadButton.textContent = 'Download Now';
+            });
+        });
+    </script>
 </body>
 </html>
